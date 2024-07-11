@@ -3,7 +3,7 @@
 * Template Name: Employee Portal
 *
 *
-* @package rj-bookmarks
+* @package astra-child
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
