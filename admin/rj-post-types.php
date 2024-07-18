@@ -26,6 +26,11 @@ function rj_employee_portal_posts_init() {
 							'IT Help Desk',
 							'IT Help Desk',
 						),
+		'DTE Benefits' => 
+						array(
+							'DTE Benefits',
+							'DTE Benefits',
+						),
 	); 
 	
 	foreach ($post_types as $menu_name => $post_details) {

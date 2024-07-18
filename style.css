@@ -12,6 +12,11 @@ Version: 1.0.0
 	padding: 0;
 	margin: 0;
 }
+body a{
+	text-decoration: none;
+	color: #000;
+}
+
 .rj-employee-portal{
 	width: 100%;
 	padding-block: clamp(20px, 5%, 50px);
@@ -26,6 +31,24 @@ Version: 1.0.0
 	padding: 20px;
 	border-radius: 8px;
 }
+/* .rj-employee-portals-bg :is(div:nth-child(5n + 1) .svg-con, a:nth-child(5n + 1)){ */
+.rj-employee-portals-bg div:nth-child(5n + 1) .svg-con{
+	background-color: #e97132;
+}
+.rj-employee-portals-bg div:nth-child(5n + 2) .svg-con{
+	background-color: #196b24;
+}
+.rj-employee-portals-bg div:nth-child(5n + 3) .svg-con{
+	background-color: #0f9ed5;
+}
+.rj-employee-portals-bg div:nth-child(5n + 4) .svg-con{
+	background-color: #a02b93;
+}
+.rj-employee-portals-bg div:nth-child(5n + 5) .svg-con{
+	background-color: #4ea72e;
+}
+
+
 .rj-employee-portal-grid .svg-con{
 	max-width: 100px;
 	margin-inline: auto;
@@ -44,7 +67,7 @@ Version: 1.0.0
 	aspect-ratio: 1/1;
 }
 .rj-employee-portal-grid .svg-con svg path{
-	fill: rgb(0, 147, 65);
+	fill: #fff;
 }
 .rj-employee-portal-grid .employee-title{
 	text-align:center;
@@ -53,3 +76,19 @@ Version: 1.0.0
 	color: #004282;
 	font: 600 20px/1.3 Poppins,sans-serif;
 }
+
+/* hr benefits */
+.hr-benefits-grid{
+	display: grid;
+  	grid-template-columns: repeat(auto-fill, clamp(198px, 14vw, 300px));
+	text-align: center;
+	gap: 1rem;
+}
+.hr-benefits-grid > *{
+	padding: 1rem;
+	border-radius: 1rem;
+	/* color: #fff;	 */
+}
+/* .hr-benefits-grid > *:hover{
+	color: #fff;	
+} */

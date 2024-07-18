@@ -13,4 +13,6 @@ add_action( 'wp_enqueue_scripts', 'rj_enqueue_styles' );
 
 
 require get_stylesheet_directory() . "/admin/rj-post-types.php";
+require get_stylesheet_directory() . "/admin/rj-custom-roles.php";
+require get_stylesheet_directory() . "/admin/rj-company-newsletter-image-box.php";
 
