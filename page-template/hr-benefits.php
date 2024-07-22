@@ -91,14 +91,6 @@ get_header();  ?>
 							</div>
 						</div>
 							
-
-
-						<a href="https://dtelandscape.com/employee-benefits/" target="_blank">
-						<?php echo esc_html_e('DTE Benefits', 'astra-child'); ?>
-						</a>
-						<a href="https://dtebenefits.com/" target="_blank">
-							<?php echo esc_html_e('ICARE Perks', 'astra-child'); ?>
-						</a>
 						
 						<button>
 							<?php echo esc_html_e('HR Forms', 'astra-child'); ?>

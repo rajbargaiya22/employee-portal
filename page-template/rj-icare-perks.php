@@ -1,6 +1,6 @@
 <?php
 /*
-* Template Name: DTE Benefits
+* Template Name: ICARE Perks
 *
 *
 * @package astra-child
@@ -20,7 +20,7 @@ get_header(); ?>
             $rj_benfits_paged = get_query_var('paged') ? get_query_var('paged') : 1;
             $rj_benefits_args = array(
                 'paged' => $rj_benfits_paged,
-                'post_type' => 'dte_benefits',
+                'post_type' => 'icare_perks',
                 // 'posts_per_page' => 9, // Add this line to set number of posts per page
                 'tax_query' => array(
                     array(

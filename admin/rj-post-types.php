@@ -211,11 +211,9 @@ function rj_employee_portal_render_pdf_metabox($post) {
  
 
 	<p>
-		<label for="button_text">Button Text:</label>
+	<label for="button_text">Button Text:</label>
 	 <input type="text" name="button_text" id="button_text" value="<?php echo esc_attr(get_post_meta($post->ID, 'button_text', true)); ?>" />
 	</p>
-
-
     <?php
 }
 
