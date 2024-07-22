@@ -1,0 +1,8 @@
+.pdf-item{
+    display: flex;
+    align-items: center;
+}
+#adminmenu .wp-menu-image img{
+    padding-top: 3px;
+    max-width: 24px;
+}
