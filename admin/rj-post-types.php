@@ -77,6 +77,12 @@ function rj_employee_portal_posts_init() {
             'menu_icon' => 'company-newsletter',
             'supports'  => array('title', 'editor', 'thumbnail'),
         ),
+        'HR Forms' => array(
+            'singular'  => 'HR Form',
+            'plural'    => 'HR Form',
+            'menu_icon' => 'company-newsletter',
+            'supports'  => array('title', 'editor', 'thumbnail'),
+        ),
     );
 
     // Register custom post types
@@ -181,7 +187,8 @@ function rj_employee_portal_all_posts_add_pdf_metabox() {
         'company_newsletter',
         'safety_policy',
         'it_help_desk',
-        'dte_policy'
+        'dte_policy',
+        'hr_forms'
     );
 
     foreach ($post_types as $post_type) {

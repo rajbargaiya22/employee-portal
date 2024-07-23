@@ -25,7 +25,7 @@ if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)
             $rj_bookmarks_args = array(
                 'paged' => $rj_newsletter_paged,
                 'post_type' => 'safety_policy',
-                'posts_per_page' => 9, // Add this line to set number of posts per page
+                'posts_per_page' => 9, 
             );
             $rj_newsletter_query = new WP_Query($rj_bookmarks_args);
 
@@ -47,7 +47,9 @@ if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)
                                 <div class="px-2 py-3">                                  
                                     <h2><?php the_title(); ?></h2>    
                                     <p class="rj-post-date mb-0"><?php echo get_the_date(); ?></p>
-                                    <?php the_excerpt(); ?>
+                                    <a href="<?php the_permalink(); ?>">
+                                        Read More
+                                    </a>
                                 </div>
                             </div>
                         </div>
