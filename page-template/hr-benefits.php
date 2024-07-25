@@ -13,30 +13,35 @@ get_header();
 
 if (is_user_logged_in()) { ?>
 
-	<main style="flex-basis: 100%">
+	<main class="rj-main">
 		<div class="container">
 			<div>
-				<h1>
-					<?php echo esc_html_e('Human Resources & Benefits', 'astra-child'); ?>
-				</h1>
+				
 
 				<div class="row">
 					<div class="col-md-6">
-
+						<h1 class="rj-main-heading">
+							<?php echo esc_html_e('Human Resources & Benefits', 'astra-child'); ?>
+						</h1>
 					</div>
 					<div class="col-md-6">
-						<div class="hr-benefits-grid rj-employee-portals-bg">
-							<a href="https://www.dayforcehcm.com/mydayforce/login.aspx" target="_blank">
+						<div class="hr-benefits-grid">
+							<a href="https://www.dayforcehcm.com/mydayforce/login.aspx" target="_blank" class="hr-option">
 								<?php echo esc_html_e('Dayforce', 'astra-child'); ?>
 							</a>
-							<a href="https://down2earthinc.sharepoint.com/sites/DownToEarthPortal/Shared%20Documents/Forms/AllItems.aspx" target="_blank"> 
+							<a href="<?php echo esc_url(get_permalink(get_page_by_title('Company Policy'))); ?>" class="hr-option"> 
 								<?php echo esc_html_e('Company Policies', 'astra-child'); ?>
 							</a>
-							<a href="<?php echo esc_url(get_permalink(get_page_by_title('New vendor'))); ?>">
+							<a href="<?php echo esc_url(get_permalink(get_page_by_title('New vendor'))); ?>" class="hr-option">
 								<?php echo esc_html_e('New Vendor Request', 'astra-child'); ?>
 							</a>
 
-							<button id="" data-bs-toggle="modal" href="#rj-dte-benefits" role="button">
+							<a href="<?php echo esc_url(get_permalink(get_page_by_title('DTE Benefits'))); ?>" class="hr-option">
+								<?php echo esc_html_e('DTE Benefits', 'astra-child'); ?>
+							</a>
+
+							<?php /*
+							<button id="" data-bs-toggle="modal" href="#rj-dte-benefits" role="button" class="hr-option">
 								<?php echo esc_html_e('DTE Benefits', 'astra-child'); ?>
 							</button>
 
@@ -91,12 +96,13 @@ if (is_user_logged_in()) { ?>
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> 
+							*/ ?>
 								
-							
-							<button>
+							<a href="<?php echo esc_url(get_permalink(get_page_by_title('HR Forms'))); ?>" class="hr-option">
 								<?php echo esc_html_e('HR Forms', 'astra-child'); ?>
-							</button>
+							</a>
+
 						</div>
 					</div>
 				</div>

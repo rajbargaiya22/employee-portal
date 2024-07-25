@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();  ?>
 
 
-<div id="rj-hr-forms">
+<div id="rj-hr-forms" class="rj-main">
 	<div class="container">
-        <h1>HR Forms</h1>
+        <h1 class="rj-main-heading">HR Forms</h1>
     	<div class="row">
 				<?php if ( have_posts() ) :
 		      $rj_newsletter_paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
@@ -31,16 +31,25 @@ get_header();  ?>
                             <?php $image_id = get_post_thumbnail_id();
                             $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
                             $image_title = get_the_title($image_id); ?>
-                            <img src="<?php echo esc_url(get_the_post_thumbnail_url( get_the_ID(), 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
+                            <img src="<?php echo esc_url(get_the_post_thumbnail_url( get_the_ID(), 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>" class="post-thumb">
 
-                            <div class="px-2 py-3">                                   
-                                <h2><?php echo get_the_title(); ?></h2>    
-                                <p><?php echo get_the_content(); ?></p>    
+                            
+                            <div class="rj-post-content">                                   
+                                <h2>
+									<a href="<?php echo get_the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+										<?php echo get_the_title(); ?>
+									</a>
+								</h2>  
 
-                                <a href="<?php echo esc_url(get_the_permalink()); ?>">
-                                    <?php echo esc_html_e('Read More', 'astra-child'); ?>
-                                </a>
+                                <p class="rj-post-desc"><?php echo get_the_content(); ?></p>    
+                                
+								<a href="<?php echo get_the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>" class="rj-read-more">
+									<?php echo esc_html('Read More', 'astra-child'); ?>
+								</a>
 
+
+                            </div>                                
+                                
                                 <?php
                                 $pdf_url = get_post_meta(get_the_ID(), 'pdf_upload', true);
                                 /* if ($pdf_url) {
@@ -58,9 +67,7 @@ get_header();  ?>
                                     </iframe>
                                      */
                                  ?>
-
-
-                            </div>
+                            
                         </div>
                     </div>
             <?php endwhile; wp_reset_postdata(); ?>

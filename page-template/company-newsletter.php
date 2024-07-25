@@ -12,10 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header(); ?>
 
 
-<div id="rj-newsletter">
+<main id="rj-newsletter" class="rj-main">
 	<div class="container">
-        <h1>Company Newsletter</h1>
-    	<div class="">
+        <h1 class="rj-main-heading">Company Newsletter</h1>
+    	<div class="row ">
 				<?php if ( have_posts() ) :
 		      $rj_newsletter_paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 					$rj_bookmarks_args = array(
@@ -26,21 +26,52 @@ get_header(); ?>
 					while($rj_newsletter_query->have_posts()) :
 					   $rj_newsletter_query->the_post();
 						 ?>
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <article class="col-lg-4 col-md-6 mb-4">
                         <div class="rj-post-container">
                             <?php $image_id = get_post_thumbnail_id();
                             $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
-                            $image_title = get_the_title($image_id); ?>
-                            <img src="<?php echo esc_url(get_the_post_thumbnail_url( get_the_ID(), 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
+                            $image_title = get_the_title($image_id); 
+							
+                            $multiple_images = get_post_meta($post->ID, '_custom_image_ids', true);
+    						$multiple_images = $multiple_images ? explode(',', $multiple_images) : array();
 
-                            <div class="px-2 py-3">                                   
-                                <h2><?php echo get_the_title(); ?></h2>    
-                                <p class="rj-post-date mb-0"><?php echo get_the_date(); ?></p>
-                                <p><?php echo get_the_content(); ?></p>    
+							// var_dump($multiple_images);
+
+							if(count($multiple_images) > 0){ ?>
+								<div class="newsletter-carousel">
+									<img class="post-thumb" src="<?php echo esc_url(get_the_post_thumbnail_url( get_the_ID(), 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
+
+									<?php
+										foreach ($multiple_images as $single_id) : ?>
+											<img class="post-thumb" src="<?php echo esc_url(wp_get_attachment_image_url( $single_id, 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
+											<?php
+										endforeach; ?>
+								</div>
+								
+								<?php 	
+							}else{ ?>
+								<img class="post-thumb" src="<?php echo esc_url(get_the_post_thumbnail_url( get_the_ID(), 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
+							<?php } ?>
+
+                            <div class="rj-post-content">                                   
+                                <h2>
+									<a href="<?php echo get_the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+										<?php echo get_the_title(); ?>
+									</a>
+								</h2>  
+
+                                <p class="rj-post-desc"><?php echo get_the_content(); ?></p>    
                                 
+								<a href="<?php echo get_the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>" class="rj-read-more">
+									<?php echo esc_html('Read More', 'astra-child'); ?>
+								</a>
+
+								<time datetime="<?php echo esc_attr(get_the_date()); ?>">
+									<?php echo esc_html(get_the_date()); ?>
+								</time>
                             </div>
                         </div>
-                    </div>
+                    </article>
             <?php endwhile; wp_reset_postdata(); ?>
 					</div>
 					<div class="rj-post-navigation">
@@ -58,6 +89,6 @@ get_header(); ?>
 				<h3><?php esc_html_e('No posts found','rj-bookmarks'); ?></h3>
 			<?php endif; ?>
 	</div>
-</div>
+</main>
 
 <?php get_footer(); 

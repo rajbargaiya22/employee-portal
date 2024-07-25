@@ -12,9 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header(); ?>
 
 
-<main>
+<main class="rj-main">
     <div class="container">
-       <h1>About your benefits</h1> 
+    <h1 class="rj-main-heading">About Your Benefits</h1> 
+
+    <div class="row">
 
        <?php
             $rj_benfits_paged = get_query_var('paged') ? get_query_var('paged') : 1;
@@ -35,24 +37,36 @@ get_header(); ?>
             while ($rj_benfits_query->have_posts()) :
                 $rj_benfits_query->the_post(); ?>
             
+            <article class="col-lg-4 col-md-6 mb-4">
+                <div class="rj-post-container">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')); ?>" 
+                            alt="<?php echo esc_attr($image_alt ?: get_the_title()); ?>" 
+                            title="<?php echo esc_attr($image_title ?: get_the_title()); ?>"
+                            class="post-thumb">
+                    <?php endif; ?>
 
-            <?php if (has_post_thumbnail()) : ?>
-                <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')); ?>" 
-                     alt="<?php echo esc_attr($image_alt ?: get_the_title()); ?>" 
-                     title="<?php echo esc_attr($image_title ?: get_the_title()); ?>">
-            <?php endif; ?>
-            <h2><?php the_title(); ?></h2>    
+                    
+                    <div class="rj-post-content">                                   
+                        <h2>
+                            <?php echo get_the_title(); ?>
+                        </h2>  
 
-            <?php if(get_post_meta($post->ID, 'button_text', true ) !=''){ ?>
-            <!-- <a href="<?php //echo esc_url(get_post_meta($post->ID, '_pdf_url', true )); ?>" target="_blank"> -->
-            <a href="<?php echo esc_url(get_the_permalink()); ?>">
-                    <?php echo esc_html(get_post_meta($post->ID, 'button_text', true )); ?>
-            </a>
-            <?php } ?>
+                        <p class="rj-post-desc"><?php echo get_the_content(); ?></p>    
+                        
+                        <?php if(get_post_meta($post->ID, 'button_text', true ) !=''){ ?>
+                        <!-- <a href="<?php //echo esc_url(get_post_meta($post->ID, '_pdf_url', true )); ?>" target="_blank"> -->
+                        <a href="<?php echo esc_url(get_the_permalink()); ?>" class="rj-read-more">
+                                <?php echo esc_html(get_post_meta($post->ID, 'button_text', true )); ?>
+                        </a>
+                        <?php } ?>
+                    </div>
+                </div>
+            </article>
 
           <?php endwhile; ?>
 
-
+        </div>
     </div>
 </main>
 

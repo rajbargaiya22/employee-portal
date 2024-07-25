@@ -1,4 +1,13 @@
 jQuery(document).ready(function($) {
+
+    jQuery('.newsletter-carousel').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+      });
+
     var searchInput = $('#s');
     var suggestionsContainer = $('#search-suggestions');
     var timer;
@@ -55,4 +64,9 @@ jQuery(document).ready(function($) {
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+
+
+    
+
+
 });

@@ -8,6 +8,20 @@ Template: astra
 Version: 1.0.0
 */
 
+:root{
+	--blue-color : #004282;
+	--green-color : #009444;
+	--para-color: #54595F;
+	--white-color: #ffffff;
+	--black-color: #000000;
+	--orange-color: #e97132;
+	--green-color: #196b24;
+	--skyblue-color: #0f9ed5;
+	--purple-color: #a02b93;
+	--lightgreen-color: #4ea72e;
+	--dblue-color: #4b2ca2;
+	--lblue-color: #2c71a4;
+}
 *{
 	padding: 0;
 	margin: 0;
@@ -16,84 +30,19 @@ body a{
 	text-decoration: none;
 	color: #000;
 }
-
-.rj-employee-portal{
-	width: 100%;
-	padding-block: clamp(20px, 5%, 50px);
+p, time{
+	color: var(--para-color);
+	font: 400 clamp(14px, 3vw, 16px)/1.5 'Poppins', sans-serif;
 }
-.rj-employee-portal-grid{
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
-	gap: clamp(20px, 4vw, 40px);
+body ul, body ol{
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
-.rj-employee-portal-grid > div{
-	box-shadow: 0 0 18px 0 rgba(0,0,0,.25);
-	padding: 20px;
-	border-radius: 8px;
-}
-/* .rj-employee-portals-bg :is(div:nth-child(5n + 1) .svg-con, a:nth-child(5n + 1)){ */
-.rj-employee-portals-bg div:nth-child(5n + 1) .svg-con{
-	background-color: #e97132;
-}
-.rj-employee-portals-bg div:nth-child(5n + 2) .svg-con{
-	background-color: #196b24;
-}
-.rj-employee-portals-bg div:nth-child(5n + 3) .svg-con{
-	background-color: #0f9ed5;
-}
-.rj-employee-portals-bg div:nth-child(5n + 4) .svg-con{
-	background-color: #a02b93;
-}
-.rj-employee-portals-bg div:nth-child(5n + 5) .svg-con{
-	background-color: #4ea72e;
-}
-
-
-.rj-employee-portal-grid .svg-con{
-	max-width: 100px;
-	margin-inline: auto;
-	background-color: #f4f3e5;
-	aspect-ratio: 1/1;
-	border-radius: 50%;
-	display: grid;
-	place-items: center;
-	transition: all 0.5s ease-in;
-}
-.rj-employee-portal-grid > div:hover .svg-con{
-	transform: rotateY(180deg);
-}
-.rj-employee-portal-grid .svg-con svg{
-	max-width: 50px;
-	aspect-ratio: 1/1;
-}
-.rj-employee-portal-grid .svg-con svg path{
-	fill: #fff;
-}
-.rj-employee-portal-grid .employee-title{
-	text-align:center;
-	text-transform: uppercase;
-	margin-top: 15px;
-	color: #004282;
-	font: 600 20px/1.3 Poppins,sans-serif;
-}
-
-/* hr benefits */
-.hr-benefits-grid{
-	display: grid;
-  	grid-template-columns: repeat(auto-fill, clamp(198px, 14vw, 300px));
-	text-align: center;
-	gap: 1rem;
-}
-.hr-benefits-grid > *{
-	padding: 1rem;
-	border-radius: 1rem;
-	/* color: #fff;	 */
-}
-/* .hr-benefits-grid > *:hover{
-	color: #fff;	
-} */
-
 /* header */
+.rj-header-container{
+	background-color: var(--blue-color);
+}
 .rj-header{
 	display: flex;
 	justify-content: space-between;
@@ -134,4 +83,181 @@ label[for="searchsubmit"] svg{
 }
 .search-suggestions.show{
 	display: block;
+}
+
+
+.rj-employee-portal{
+	width: 100%;
+	padding-block: clamp(20px, 5%, 50px);
+}
+.rj-employee-portal-grid{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: clamp(20px, 4vw, 40px);
+}
+.rj-employee-portal-grid > div{
+	box-shadow: 0 0 18px 0 rgba(0,0,0,.25);
+	padding: 20px;
+	border-radius: 8px;
+}
+/* .rj-employee-portals-bg :is(div:nth-child(5n + 1) .svg-con, a:nth-child(5n + 1)){ */
+.rj-employee-portals-bg div:nth-child(5n + 1) .svg-con{
+	background-color: var(--orange-color);
+}
+.rj-employee-portals-bg div:nth-child(5n + 2) .svg-con{
+	background-color: var(--green-color);
+}
+.rj-employee-portals-bg div:nth-child(5n + 3) .svg-con{
+	background-color: var(--skyblue-color);
+}
+.rj-employee-portals-bg div:nth-child(5n + 4) .svg-con{
+	background-color: var(--purple-color);
+}
+.rj-employee-portals-bg div:nth-child(5n + 5) .svg-con{
+	background-color: var(--lightgreen-color);
+}
+.rj-employee-portal-grid .svg-con{
+	max-width: 100px;
+	margin-inline: auto;
+	background-color: #f4f3e5;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	transition: all 0.5s ease-in;
+}
+.rj-employee-portal-grid > div:hover .svg-con{
+	transform: rotateY(180deg);
+}
+.rj-employee-portal-grid .svg-con svg{
+	max-width: 50px;
+	aspect-ratio: 1/1;
+}
+.rj-employee-portal-grid .svg-con svg path{
+	fill: #fff;
+}
+.rj-employee-portal-grid .employee-title{
+	text-align:center;
+	text-transform: uppercase;
+	margin-top: 15px;
+	color: #004282;
+	font: 600 20px/1.3 Poppins,sans-serif;
+}
+
+/* hr benefits */
+.hr-benefits-grid{
+	display: grid;
+  	grid-template-columns: repeat(auto-fill, clamp(200px, 14vw, 300px));
+	grid-auto-rows: 100px;
+	text-align: center;
+	gap: 1rem;
+}
+.hr-benefits-grid .hr-option{
+	padding: 1rem;
+	border-radius: 1rem;
+	color: var(--white-color);	
+	display: grid;
+	place-items: center;
+}
+
+.hr-benefits-grid > *:hover{
+	color: var(--white-color);
+}
+
+.hr-benefits-grid .hr-option:first-child{
+	background-color: var(--purple-color);	
+}
+.hr-benefits-grid .hr-option:nth-child(2){
+	background-color: var(--dblue-color);	
+}
+.hr-benefits-grid .hr-option:nth-child(3){
+	background-color: var(--lblue-color);	
+}
+.hr-benefits-grid .hr-option:nth-child(4){
+	background-color: var(--green-color);	
+}
+.hr-benefits-grid .hr-option:nth-child(5){
+	background-color: var(--lightgreen-color);	
+}
+
+/* common css */
+.rj-main-heading{
+	font: 700 clamp(30px, 3vw, 50px)/1.3 'Poppins', sans-serif;
+	padding: clamp(20px, 4vw, 30px) 0;
+}
+.rj-main{
+	margin: clamp(20px, 5%, 50px) 0;
+}
+.rj-post-container, .it-help-box{
+	background-color: #fff;
+  	box-shadow: 0 0 10px 0 rgba(0,0,0,.11);
+	height: 100%;
+}
+.rj-post-container .post-thumb{
+	width: 100%;	
+	aspect-ratio: 16/9;
+	object-fit: cover;
+}
+.rj-post-content{
+	padding: 10px;
+	display: flex;
+  	flex-direction: column;
+  	gap: 15px;
+}
+.rj-post-content h2{
+	font: 700 clamp(16px, 3vw, 20px)/1.6 'Poppins', sans-serif;
+	text-transform: capitalize;
+	margin-bottom: 0;
+}
+.rj-post-content h2 a{
+	color: var(--blue-color);
+}
+.rj-post-content h2:hover a{
+	color: var(--green	-color);
+}
+.rj-post-desc{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	margin-bottom: 0;
+}
+.rj-read-more{
+	display: block;
+	width: max-content;
+	background-color: var(--green-color);
+	color: var(--white-color);
+	padding: 5px 30px;
+	font: 500 12px/2 'Poppins', sans-serif;
+}
+.rj-read-more:hover{
+	color: var(--white-color);
+}
+
+.newsletter-carousel{
+	overflow: hidden;
+	position: relative;
+}
+.newsletter-carousel .slick-arrow{
+	z-index: 2;
+	background-color: var(--blue-color);
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+}
+.newsletter-carousel .slick-arrow:hover, .newsletter-carousel .slick-arrow:focus{
+	background-color: var(--blue-color);
+}
+.newsletter-carousel .slick-arrow::before{
+	color: var(--white-color);
+	font-size: 16px;
+}
+.newsletter-carousel .slick-prev{
+	left: 5px;
+}
+.newsletter-carousel .slick-next{
+	right: 5px;
+}
+.it-help-box > div{
+	padding: 20px 40px 40px;
 }

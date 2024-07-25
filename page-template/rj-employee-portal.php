@@ -48,6 +48,7 @@ if (is_user_logged_in()) {
 
 
 <main class="rj-employee-portal">
+  <div class="container">
     <div class="rj-employee-portal-grid rj-employee-portals-bg">
 		<?php
 			foreach($portals as $portal => $info){ 
@@ -57,6 +58,7 @@ if (is_user_logged_in()) {
 			}
 		?>
     </div>
+  </div>
 </main>
 
 <?php

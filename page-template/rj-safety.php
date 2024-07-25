@@ -16,9 +16,9 @@ $allowed_roles = array('regionals', 'branch_managers', 'office_managers', 'accou
 
 if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)) {
     ?>
-    <div id="rj-safety" class="w-100" style="flex-basis: 100%">
+    <div id="rj-safety" class="rj-main">
         <div class="container">
-            <h1>Safety</h1>
+        <h1 class="rj-main-heading">Safety</h1>
             
             <?php
             $rj_newsletter_paged = get_query_var('paged') ? get_query_var('paged') : 1;
@@ -44,12 +44,16 @@ if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)
                                          alt="<?php echo esc_attr($image_alt ?: get_the_title()); ?>" 
                                          title="<?php echo esc_attr($image_title ?: get_the_title()); ?>">
                                 <?php endif; ?>
-                                <div class="px-2 py-3">                                  
-                                    <h2><?php the_title(); ?></h2>    
-                                    <p class="rj-post-date mb-0"><?php echo get_the_date(); ?></p>
-                                    <a href="<?php the_permalink(); ?>">
-                                        Read More
-                                    </a>
+                                <div class="rj-post-content">                                  
+                                <h2>
+									<a href="<?php echo get_the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+										<?php echo get_the_title(); ?>
+									</a>
+								</h2>  
+                                <p class="rj-post-desc"><?php echo get_the_content(); ?></p>    
+                                    <a href="<?php echo get_the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>" class="rj-read-more">
+									    <?php echo esc_html('Read More', 'astra-child'); ?>
+								    </a>
                                 </div>
                             </div>
                         </div>

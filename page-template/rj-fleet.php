@@ -13,10 +13,12 @@ get_header();  ?>
 
     <main>
         <div class="container">
-            <h1>Fleet</h1>
+        <h1 class="rj-main-heading">Fleet</h1>
 
-            <a href="https://cloud.samsara.com/signin" target="_blank">Samsara</a>
-            <a href="https://secure.fleetio.com/users/sign_in" target="_blank">Fleetio</a>
+            <div style="display: flex; gap: 15px">
+                <a href="https://cloud.samsara.com/signin" target="_blank" class="rj-read-more">Samsara</a>
+                <a href="https://secure.fleetio.com/users/sign_in" target="_blank" class="rj-read-more">Fleetio</a>
+            </div>
         </div>
     </main>
 

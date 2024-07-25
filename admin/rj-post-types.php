@@ -221,6 +221,13 @@ function rj_employee_portal_render_pdf_metabox($post) {
 	<label for="button_text">Button Text:</label>
 	 <input type="text" name="button_text" id="button_text" value="<?php echo esc_attr(get_post_meta($post->ID, 'button_text', true)); ?>" />
 	</p>
+
+    <?php 
+    if ( 'it_help_desk' == get_post_type() ) { ?>
+        <label for="button_link">Button Text:</label>
+        <input type="text" name="button_link" id="button_link" value="<?php echo esc_attr(get_post_meta($post->ID, 'button_link', true)); ?>" />
+    <?php } ?>
+
     <?php
 }
 
@@ -242,6 +249,9 @@ function save_pdf_metabox($post_id) {
     }
     if (isset($_POST['button_text'])) {
         update_post_meta($post_id, 'button_text', sanitize_text_field($_POST['button_text']));
+    }
+    if (isset($_POST['button_link'])) {
+        update_post_meta($post_id, 'button_link', sanitize_text_field($_POST['button_link']));
     }
 }
 add_action('save_post', 'save_pdf_metabox');
