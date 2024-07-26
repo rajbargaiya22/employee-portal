@@ -121,7 +121,7 @@ add_action('save_post', 'save_multiple_image_uploader_meta_box');
 
 // pdf metabox
 
-
+/*
 function add_pdf_upload_meta_box() {
     add_meta_box(
         'pdf_upload_meta_box',
@@ -192,4 +192,4 @@ function save_pdf_upload_meta($post_id) {
         delete_post_meta($post_id, 'pdf_upload');
     }
 }
-add_action('save_post', 'save_pdf_upload_meta');
+add_action('save_post', 'save_pdf_upload_meta'); */

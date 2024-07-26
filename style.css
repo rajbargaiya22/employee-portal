@@ -39,6 +39,9 @@ body ul, body ol{
 	padding: 0;
 	list-style: none;
 }
+img{
+	width: 100%;
+}
 /* header */
 .rj-header-container{
 	background-color: var(--blue-color);
@@ -204,12 +207,12 @@ label[for="searchsubmit"] svg{
   	flex-direction: column;
   	gap: 15px;
 }
-.rj-post-content h2{
+.rj-post-content h2, .rj-vendor-form-title{
 	font: 700 clamp(16px, 3vw, 20px)/1.6 'Poppins', sans-serif;
 	text-transform: capitalize;
 	margin-bottom: 0;
 }
-.rj-post-content h2 a{
+.rj-post-content h2 a, .rj-vendor-form-title{
 	color: var(--blue-color);
 }
 .rj-post-content h2:hover a{
@@ -260,4 +263,10 @@ label[for="searchsubmit"] svg{
 }
 .it-help-box > div{
 	padding: 20px 40px 40px;
+}
+.rj-vendor-form-title{
+	margin: 20px 0;
+}
+.vendor-view-more{
+	margin: 10px 0;
 }

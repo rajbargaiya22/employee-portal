@@ -65,8 +65,39 @@ jQuery(document).ready(function($) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-
-    
-
-
 });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const canvas = document.getElementById('pdf-canvas');
+//     if (canvas) {
+//         const url = canvas.dataset.pdfUrl;
+//         console.log("PDF URL:", url);
+
+//         // Set the worker source
+//         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.worker.min.js';
+
+//         // Load the PDF
+//         pdfjsLib.getDocument(url).promise
+//             .then(function(pdf) {
+//                 return pdf.getPage(1);
+//             })
+//             .then(function(page) {
+//                 const scale = 1.5;
+//                 const viewport = page.getViewport({ scale: scale });
+
+//                 canvas.height = viewport.height;
+//                 canvas.width = viewport.width;
+
+//                 const context = canvas.getContext('2d');
+//                 const renderContext = {
+//                     canvasContext: context,
+//                     viewport: viewport
+//                 };
+//                 return page.render(renderContext);
+//             })
+//             .catch(function(error) {
+//                 console.error('Error loading PDF:', error);
+//                 canvas.insertAdjacentHTML('afterend', '<p>Error loading PDF. Please try again later.</p>');
+//             });
+//     }
+// });

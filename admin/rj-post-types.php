@@ -223,8 +223,8 @@ function rj_employee_portal_render_pdf_metabox($post) {
 	</p>
 
     <?php 
-    if ( 'it_help_desk' == get_post_type() ) { ?>
-        <label for="button_link">Button Text:</label>
+    if ( 'it_help_desk' == get_post_type() || 'dte_benefits' == get_post_type() ) { ?>
+        <label for="button_link">Button Link:</label>
         <input type="text" name="button_link" id="button_link" value="<?php echo esc_attr(get_post_meta($post->ID, 'button_link', true)); ?>" />
     <?php } ?>
 
