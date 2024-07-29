@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 get_header(); 
-  
+
 if (is_user_logged_in()) {
 
     $portals = array(
@@ -56,7 +56,7 @@ if (is_user_logged_in()) {
 						. $info[0] . '</div><h3 class="employee-title">' . $portal . '</h3>';
 				echo '</a></div>';
 			}
-		?>
+		?>    
     </div>
   </div>
 </main>

@@ -40,6 +40,7 @@ require get_stylesheet_directory() . "/admin/rj-post-types.php";
 require get_stylesheet_directory() . "/admin/rj-custom-roles.php";
 require get_stylesheet_directory() . "/admin/rj-company-newsletter-image-box.php";
 require get_stylesheet_directory() . "/admin/rj-new-vendor-meta-box.php";
+require get_stylesheet_directory() . "/admin/rj-vendor-list-metabox.php";
 
 
 function get_search_suggestions() {
@@ -83,4 +84,11 @@ add_action('wp_ajax_get_search_suggestions', 'get_search_suggestions');
 add_action('wp_ajax_nopriv_get_search_suggestions', 'get_search_suggestions');
   
 
+//  hide the admin bar 
+add_action('after_setup_theme', 'rj_employee_portak_remove_admin_bar');
+function rj_employee_portak_remove_admin_bar() {
+    if (!current_user_can('administrator') && !is_admin() ) {
+        show_admin_bar(false);
+    }
+}
 
