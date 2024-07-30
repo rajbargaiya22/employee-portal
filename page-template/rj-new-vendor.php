@@ -14,7 +14,11 @@ get_header(); ?>
 
 <div id="rj-newsletter" class="rj-main">
 	<div class="container">
-        <h1 class="rj-main-heading">Vendors</h1>
+        
+            <h1 class="rj-main-heading">Vendors</h1>
+           
+        
+
     	<div class="row">
 				<?php if ( have_posts() ) :
 		      $rj_newsletter_paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
@@ -95,9 +99,9 @@ get_header(); ?>
 						?>
 					</div>
 			<?php else : ?>
-				<h3><?php esc_html_e('No posts found','rj-bookmarks'); ?></h3>
+				<h3><?php esc_html_e('No posts found','astra-child'); ?></h3>
 			<?php endif; ?>
 	</div>
 </div>
 
-<?php get_footer(); 
+<?php get_footer();

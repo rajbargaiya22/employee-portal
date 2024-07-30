@@ -10,9 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-get_header(); ?>
+get_header(); 
+?>
 
-<article>
+<article class="rj-single-post">
     <div class="container ">
     <?php
         if ( have_posts() ) :
@@ -21,16 +22,49 @@ get_header(); ?>
                 <?php echo get_the_title(); ?>
             </h1>
 
-             <?php $image_id = get_post_thumbnail_id();
-               $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
-               $image_title = get_the_title($image_id);
-               $image_url = get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?>
+            <?php if('company_newsletter' == get_post_type()){ ?>
+                <?php $image_id = get_post_thumbnail_id();
+                    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+                    $image_title = get_the_title($image_id); 
+                    
+                    $multiple_images = get_post_meta($post->ID, '_custom_image_ids', true);
+                    $multiple_images = $multiple_images ? explode(',', $multiple_images) : array();
 
-               <?php if ($image_url){ ?>
-                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
-               <?php }else{ ?>
-                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/dummy-post-image.webp'); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
-               <?php } ?>
+                    if(count($multiple_images) > 0){ ?>
+                        <div class="single-newsletter-thumb">
+                            
+                            <div class="news-images">
+                                <?php get_template_part('/template-parts/border'); ?>
+                                <img class="post-thumb" src="<?php echo esc_url(get_the_post_thumbnail_url( get_the_ID(), 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
+                            </div>
+
+                            <?php
+                            foreach ($multiple_images as $single_id) : ?>
+                                <div class="news-images">
+                                    <?php get_template_part('/template-parts/border'); ?>
+                                    <img class="post-thumb" src="<?php echo esc_url(wp_get_attachment_image_url( $single_id, 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
+                                </div>
+                                <?php
+                            endforeach; ?>
+                        </div>
+                        <?php 	
+                    }else{ ?>
+                        <img class="post-thumb" src="<?php echo esc_url(get_the_post_thumbnail_url( get_the_ID(), 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
+                    <?php } ?>
+            <?php }else{ ?>
+                <?php $image_id = get_post_thumbnail_id();
+                  $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+                  $image_title = get_the_title($image_id);
+                  $image_url = get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?>
+    
+                  <?php if ($image_url){ ?>
+                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
+                  <?php }else{ ?>
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/dummy-post-image.webp'); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
+                  <?php } ?>
+                
+            <?php } ?>
+
 
             <?php $content = get_the_content();  ?>
             <div class="">
@@ -85,5 +119,8 @@ get_header(); ?>
         <?php endwhile; endif;; ?>
     </div>
 </article>
+
+
+
 
 <?php get_footer(); ?>

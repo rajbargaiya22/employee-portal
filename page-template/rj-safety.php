@@ -70,7 +70,7 @@ if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)
                     ?>
                 </div>
             <?php else : ?>
-                <h3><?php esc_html_e('No posts found', 'rj-bookmarks'); ?></h3>
+                <h3><?php esc_html_e('No posts found', 'astra-child'); ?></h3>
             <?php 
             endif; 
             wp_reset_postdata();

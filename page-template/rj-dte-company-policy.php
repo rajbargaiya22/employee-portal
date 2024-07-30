@@ -81,7 +81,7 @@ get_header(); ?>
 						?>
 					</div>
 			<?php else : ?>
-				<h3><?php esc_html_e('No posts found','rj-bookmarks'); ?></h3>
+				<h3><?php esc_html_e('No posts found','astra-child'); ?></h3>
 			<?php endif; ?>
 	</div>
 </div>

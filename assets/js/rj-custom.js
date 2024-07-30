@@ -67,6 +67,28 @@ jQuery(document).ready(function($) {
 
 });
 
+
+jQuery(document).ready(function($) {
+    $('#vendor-searchform').on('submit', function(e) {
+        e.preventDefault();
+        
+        var formData = $(this).serialize();
+
+        $.ajax({
+            url: ajaxurl,
+            type: 'GET',
+            data: formData + '&action=vendor_search',
+            success: function(response) {
+                $('#rj-vendor-list').html(response); 
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        });
+    });
+});
+
+
 // document.addEventListener('DOMContentLoaded', function() {
 //     const canvas = document.getElementById('pdf-canvas');
 //     if (canvas) {

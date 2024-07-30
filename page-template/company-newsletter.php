@@ -14,7 +14,16 @@ get_header(); ?>
 
 <main id="rj-newsletter" class="rj-main">
 	<div class="container">
-        <h1 class="rj-main-heading">Company Newsletter</h1>
+
+		<div class="new-vendor-heading">
+			<h1 class="rj-main-heading">Company Newsletter</h1>
+
+			<a href="<?php echo esc_url(get_the_permalink(get_page_by_title('Upload Newsletter'))); ?>" class="rj-read-more">
+				Upload Newsletter
+			</a>
+		</div>
+
+
     	<div class="row ">
 				<?php if ( have_posts() ) :
 		      $rj_newsletter_paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
@@ -28,17 +37,16 @@ get_header(); ?>
 						 ?>
                     <article class="col-lg-4 col-md-6 mb-4">
                         <div class="rj-post-container">
-                            <?php $image_id = get_post_thumbnail_id();
+                           <?php $image_id = get_post_thumbnail_id();
                             $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
                             $image_title = get_the_title($image_id); 
 							
                             $multiple_images = get_post_meta($post->ID, '_custom_image_ids', true);
     						$multiple_images = $multiple_images ? explode(',', $multiple_images) : array();
 
-							// var_dump($multiple_images);
-
 							if(count($multiple_images) > 0){ ?>
 								<div class="newsletter-carousel">
+									
 									<img class="post-thumb" src="<?php echo esc_url(get_the_post_thumbnail_url( get_the_ID(), 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
 
 									<?php
@@ -86,7 +94,7 @@ get_header(); ?>
 						?>
 					</div>
 			<?php else : ?>
-				<h3><?php esc_html_e('No posts found','rj-bookmarks'); ?></h3>
+				<h3><?php esc_html_e('No posts found','astra-child'); ?></h3>
 			<?php endif; ?>
 	</div>
 </main>
