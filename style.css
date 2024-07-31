@@ -90,8 +90,6 @@ label[for="searchsubmit"] svg{
 .search-suggestions.show{
 	display: block;
 }
-
-
 .rj-employee-portal, .rj-single-post{
 	width: 100%;
 	padding-block: clamp(20px, 5%, 50px);

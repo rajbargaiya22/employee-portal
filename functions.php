@@ -41,6 +41,7 @@ require get_stylesheet_directory() . "/admin/rj-custom-roles.php";
 require get_stylesheet_directory() . "/admin/rj-company-newsletter-image-box.php";
 require get_stylesheet_directory() . "/admin/rj-new-vendor-meta-box.php";
 require get_stylesheet_directory() . "/admin/rj-vendor-list-metabox.php";
+require get_stylesheet_directory() . "/admin/rj-aspire-metabox.php";
 
 
 function get_search_suggestions() {

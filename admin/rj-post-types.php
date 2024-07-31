@@ -89,6 +89,12 @@ function rj_employee_portal_posts_init() {
             'menu_icon' => 'company-newsletter',
             'supports'  => array('title', 'editor'),
         ),
+        'Aspire' => array(
+            'singular'  => 'Aspire',
+            'plural'    => 'Aspire',
+            'menu_icon' => 'company-newsletter',
+            'supports'  => array('title', 'editor'),
+        ),
     );
 
     // Register custom post types
