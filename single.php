@@ -67,7 +67,7 @@ get_header();
 
 
             <?php $content = get_the_content();  ?>
-            <div class="">
+            <div class="single-post-content">
                 <?php echo $content; ?>
             </div>
                
@@ -76,20 +76,32 @@ get_header();
                 $pdf_url = get_post_meta(get_the_ID(), '_pdf_url', true);
                 
                 if ($pdf_url) { 
-                    echo '<a href="' . esc_url($pdf_url) . '" download>Download PDF</a>';
-                /*
-                ?>
+                    $doc_type = pathinfo($pdf_url, PATHINFO_EXTENSION); 
+
+                    if($doc_type == 'pdf'){
+                        echo '<a href="' . esc_url($pdf_url) . '" class="rj-read-more"  download>Download PDF</a>';
+                    }elseif($doc_type == 'docx'){
+                        echo '<a href="' . esc_url($pdf_url) . '" class="rj-read-more"  download>Download Doc</a>';
+                    }else{
+                        echo '<a href="' . esc_url($pdf_url) . '" class="rj-read-more"  download>Download Excel</a>';
+                    }
+
+
+                    if($doc_type == 'pdf'){ ?>
+                        <iframe src="<?php echo esc_url($pdf_url); ?>" width="100%" height="600px" class="rj-single-post-iframe">
+                            <p>Your browser doesn't support iframes. Please download the PDF to view it: <a href="<?php echo esc_url($pdf_url) ?>">Download PDF</a>.</p>
+                        </iframe>
+                    <?php }else{ ?>
+                        <iframe src="https://docs.google.com/viewer?url=<?php echo $pdf_url; ?>&embedded=true" style="width:100%; height:600px;"  frameborder="0" class="rj-single-post-iframe">
+                        </iframe>
+                    <?php } ?>
+
+                <!-- <iframe src="https://docs.google.com/gview?url=http://remote.url.tld/path/to/document.doc&embedded=true"></iframe> -->
                 
-                <embed src="<?php echo esc_url($pdf_url) ?>" type="application/pdf" width="100%" height="400px" /> 
+                
 
-                <object data="<?php echo esc_url($pdf_url) ?>" type="application/pdf" width="100%" height="600px">
-                    <p>Your browser doesn't support PDF viewing. Please download the PDF to view it: <a href="path/to/your/file.pdf">Download PDF</a>.</p>
-                </object>
-                    */ ?>
 
-                <iframe src="<?php echo esc_url($pdf_url) ?>" width="100%" height="600px">
-                    <p>Your browser doesn't support iframes. Please download the PDF to view it: <a href="<?php echo esc_url($pdf_url) ?>">Download PDF</a>.</p>
-                </iframe>
+
             <?php } ?>    
 
             <?php if ( 'new_vendor' == get_post_type() ) { ?>
@@ -97,17 +109,47 @@ get_header();
                     $pdf_data = get_post_meta(get_the_ID(), 'pdf_repeater', true);
                     if (!empty($pdf_data)) {
                         echo '<div class="row">';
-                        foreach ($pdf_data as $item) { ?>
+                        foreach ($pdf_data as $item) {
+                            $doc_type = pathinfo($item['url'], PATHINFO_EXTENSION); 
+                            
+                            ?>
                             <div class="col-md-4">
                                 <h3 class="rj-vendor-form-title">
                                     <?php echo esc_html($item['title']); ?>
                                 </h3>
-                                <iframe src="<?php echo esc_url($item['url']) ?>" width="100%" height="300px">
-                                    <p>Your browser doesn't support iframes. Please download the PDF to view it: <a href="<?php echo esc_url($item['url']); ?>">Download PDF</a>.</p>
-                                </iframe>
-                                <a href="<?php echo esc_url($item['url']) ?>" target="_blank" class="rj-read-more vendor-view-more">
-                                    <?php echo esc_html('View PDF'); ?>
-                                </a>
+
+                                <?php if($doc_type == 'pdf'){ ?>
+                                    <iframe src="<?php echo esc_url($item['url']); ?>" width="100%" height="300px" class="rj-single-post-iframe">
+                                        <p>Your browser doesn't support iframes. Please download the PDF to view it: <a href="<?php echo esc_url($item['url']) ?>">Download PDF</a>.</p>
+                                    </iframe>
+                                <?php }else{ ?>
+                                    <iframe src="https://docs.google.com/viewer?url=<?php echo $item['url']; ?>&embedded=true" style="width:100%; height:300px;"  frameborder="0" class="rj-single-post-iframe">
+                                    </iframe>
+                                <?php } ?>
+
+
+
+                                <!-- <iframe src="<?php // echo esc_url($item['url']) ?>" width="100%" height="300px">
+                                    <p>Your browser doesn't support iframes. Please download the PDF to view it: <a href="<?php // echo esc_url($item['url']); ?>">Download PDF</a>.</p>
+                                </iframe> -->
+
+
+                                <?php
+                                    if($doc_type == 'pdf'){ ?>
+                                        <a href="<?php echo esc_url($item['url']) ?>" target="_blank" class="rj-read-more vendor-view-more">
+                                            <?php echo esc_html('View PDF'); ?>
+                                        </a>
+                                    <?php }elseif($doc_type == 'docx'){ ?>
+                                        <a href="<?php echo esc_url($item['url']) ?>" target="_blank" class="rj-read-more vendor-view-more">
+                                            <?php echo esc_html('View PDF'); ?>
+                                        </a>
+                                    <?php }else{ ?>
+                                        <a href="<?php echo esc_url($item['url']) ?>" target="_blank" class="rj-read-more vendor-view-more">
+                                            <?php echo esc_html('View PDF'); ?>
+                                        </a>
+                                    <?php } ?>
+
+                                
                             </div>
                             <?php
                         }

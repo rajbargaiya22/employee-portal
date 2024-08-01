@@ -37,7 +37,7 @@ jQuery(document).ready(function($) {
                         
                         for (var postType in results) {
                             if (results.hasOwnProperty(postType)) {
-                                html += '<h3>' + capitalizeFirstLetter(postType) + '</h3>';
+                                // html += '<h3>' + capitalizeFirstLetter(postType) + '</h3>';
                                 html += '<ul>';
                                 results[postType].forEach(function(result) {
                                     html += '<li>';

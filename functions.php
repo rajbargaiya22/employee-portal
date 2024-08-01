@@ -244,10 +244,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['frontend_post_nonce_fi
                     }
                 }
 
-                // Debugging: Print image IDs
-                echo "<pre> Image IDs: ";
-                print_r($image_ids);
-                echo "</pre>";
 
                 if (!empty($image_ids)) {
                     set_post_thumbnail($post_id, $image_ids[0]);

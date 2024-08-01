@@ -85,6 +85,7 @@ label[for="searchsubmit"] svg{
 	right: 0;
 	z-index: 99;
 	min-width: clamp(250px, 30vw, 350px);
+	padding: 10px;
 	display: none;
 }
 .search-suggestions.show{
@@ -337,4 +338,27 @@ label[for="searchsubmit"] svg{
 }
 .news-images:nth-child(5n + 5) svg path{
 	fill: var(--lightgreen-color);
+}
+
+.rj-aspire-contents .aspire-title{
+	font: 700 clamp(18px, 3vw, 24px)/1.6 'Poppins', sans-serif;
+}
+
+.rj-aspire-contents .accordion-header button{
+	font: 700 clamp(16px, 3vw, 18px)/1.6 'Poppins', sans-serif;
+}
+.rj-aspire-contents .accordion-header :is(button:focus, button:hover){
+	background-color: rgb(207, 226, 255);
+	color: rgb(5, 44, 101)
+}
+
+.rj-aspire-contents .accordion-body h4{
+	font: 700 14px/1.6 'Poppins', sans-serif;
+}
+.rj-aspire-contents .accordion-body h4 a{
+	margin-inline-start: 10px;
+}
+
+.single-post-content, .rj-single-post-iframe{
+	margin: 15px 0;
 }

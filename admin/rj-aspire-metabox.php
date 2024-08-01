@@ -35,7 +35,6 @@ function rj_employee_portal_add_aspire_metafields_callback($post) {
                 echo '<p>';
                 echo '<label for="rj_ep_aspire_label_' . $i . '">Heading:</label> ';
                 echo '<input type="text" id="rj_ep_aspire_label_' . $i . '" name="rj_ep_aspire_headings[' . $i . '][heading]" value="' . esc_attr($heading) . '">';
-                
                 echo '</p>';
                 echo '<div class="subfields-container">';
                 if (!empty($subheadings)) {
@@ -76,11 +75,15 @@ function rj_employee_portal_add_aspire_metafields_callback($post) {
             var existingFields = $('#rj_ep_aspire_headings .rj_ep_aspire_field_group');
             
             for (var i = 0; i < number; i++) {
-                var heading = (i < existingFields.length) ? $(existingFields[i]).find('input[name^="rj_ep_aspire_headings"][name$="[heading]"]').val() : '';
+                var existingField = (i < existingFields.length) ? $(existingFields[i]) : null;
+                var heading = existingField ? existingField.find('input[name^="rj_ep_aspire_headings"][name$="[heading]"]').val() : '';
+                var subfieldsHtml = existingField ? existingField.find('.subfields-container').html() : '';
+
                 fieldsHtml += '<div class="rj_ep_aspire_field_group"><p>' +
                     '<label for="rj_ep_aspire_label_' + i + '">Heading:</label> ' +
-                    '<input type="text" id="rj_ep_aspire_label_' + i + '" name="rj_ep_aspire_headings[' + i + '][heading]" value="' + heading + '">'
-                    '</p><div class="subfields-container"></div><button type="button" class="add_subfields" data-group="' + i + '">Add Subfields</button></div>';
+                    '<input type="text" id="rj_ep_aspire_label_' + i + '" name="rj_ep_aspire_headings[' + i + '][heading]" value="' + heading + '">' +
+                    '</p><div class="subfields-container">' + subfieldsHtml + '</div>' +
+                    '<button type="button" class="add_subfields" data-group="' + i + '">Add Subfields</button></div>';
             }
             $('#rj_ep_aspire_headings').html(fieldsHtml);
             fieldCounter = number;
