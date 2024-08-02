@@ -60,6 +60,18 @@ img{
 .search-form-container{
 	position: relative;
 }
+.rj-header-search{
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+.rj-header-search svg{
+	width: 30px;
+	height: 30px;
+}
+.rj-header-search .rj-home-icon svg path{
+	fill: var(--white-color);
+}
 .searchform{
 	position: relative;	
 }
@@ -361,4 +373,45 @@ label[for="searchsubmit"] svg{
 
 .single-post-content, .rj-single-post-iframe{
 	margin: 15px 0;
+}
+
+.new-vendor-pdfs svg{
+	width: 30px;
+	height: 30px;
+	margin-inline-end: 10px;
+}
+.new-vendor-pdfs a{
+	text-transform: capitalize;
+}
+
+.frontend-post-form{
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-content: center;
+	gap: 10px
+}
+
+.frontend-post-form input[type="submit"]{
+	width: max-content;
+	background-color: var(--skyblue-color);
+	margin-top: 20px;
+	/* margin: auto; */
+}
+.frontend-post-form label{
+	margin-top: 10px;
+	font: 600 16px/1 'Poppins', sans-serif;
+}
+.frontend-post-form label[for="post_images"]{
+	width: max-content;
+	cursor: pointer;
+}
+.frontend-post-form input[type="file"] {
+	display: none;
+}
+.frontend-post-form .news-images-btn{
+	width: max-content;
+	background-color: var(--green-color);
+	color: var(--white-color);
+	padding: 5px 30px;
+	font: 500 12px/2 'Poppins', sans-serif;
 }

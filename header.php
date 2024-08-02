@@ -112,7 +112,12 @@ if ( apply_filters( 'astra_header_profile_gmpg_link', true ) ) {
             <?php }
           } ?>
 
-        <?php get_search_form(); ?>
+          <div class="rj-header-search">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="rj-home-icon">
+              <?php get_template_part('template-parts/home-icon'); ?>
+            </a>
+            <?php get_search_form(); ?>
+          </div>
       </div>
     </div>
 

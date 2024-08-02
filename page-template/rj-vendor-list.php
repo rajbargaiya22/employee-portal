@@ -29,6 +29,23 @@ if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)
             <?php } ?>
         </div>
         
+        <?php
+            $pdf_url = get_option('vendor_list_excel_file');
+            
+            if ($pdf_url) { 
+                $doc_type = pathinfo($pdf_url, PATHINFO_EXTENSION); 
+
+            if($doc_type == 'pdf'){ ?>
+                    <iframe src="<?php echo esc_url($pdf_url); ?>" width="100%" height="600px" class="rj-single-post-iframe">
+                        <p>Your browser doesn't support iframes. Please download the PDF to view it: <a href="<?php echo esc_url($pdf_url) ?>">Download PDF</a>.</p>
+                    </iframe>
+                <?php }else{ ?>
+                    <iframe src="https://docs.google.com/viewer?url=<?php echo $pdf_url; ?>&embedded=true" style="width:100%; height:600px;"  frameborder="0" class="rj-single-post-iframe">
+                    </iframe>
+                <?php } ?>              
+            <?php } ?> 
+        
+
 
         <?php 
         

@@ -48,9 +48,11 @@ get_header();
                             endforeach; ?>
                         </div>
                         <?php 	
-                    }else{ ?>
+                    }else{ 
+                        if ( has_post_thumbnail() ) { ?>
                         <img class="post-thumb" src="<?php echo esc_url(get_the_post_thumbnail_url( get_the_ID(), 'medium' )); ?>" alt="<?php echo esc_attr(($image_alt) ? $image_alt : get_the_title() ); ?>" title="<?php echo esc_attr(($image_title) ? $image_title : get_the_title() ); ?>">
-                    <?php } ?>
+                        <?php } 
+                    } ?>
             <?php }else{ ?>
                 <?php $image_id = get_post_thumbnail_id();
                   $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
@@ -67,9 +69,9 @@ get_header();
 
 
             <?php $content = get_the_content();  ?>
-            <div class="single-post-content">
-                <?php echo $content; ?>
-            </div>
+                <div class="single-post-content">
+                    <?php echo $content; ?>
+                </div>
                
 
             <?php

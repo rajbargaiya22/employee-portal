@@ -12,7 +12,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header(); ?>
 
 
+<div class="rj-benefits-vif" style="height: 30vh; background-color: #91c647;">
+    <div class="enroll-box">
+        <h3>
+            Welcome to your Down to Earth Benefits
+        </h3>
+        <a href="http://www.dayforcehcm.com" target="_blank">
+            Click to Enroll
+        </a>
+    </div>
+</div>
 <main class="rj-main">
+
+
+
     <div class="container">
     <h1 class="rj-main-heading">About Your Benefits</h1> 
 
