@@ -138,8 +138,9 @@ function handle_vendor_search() {
     if ($query->have_posts()) : ?>
         <div class="row">
             <?php while ($query->have_posts()) : $query->the_post(); ?>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="rj-post-container">
+                <div class="col-lg-4 col-md-6 mb-4"  style="margin-bottom: 10px">
+                <?php $aspire_vendor = get_post_meta($post->ID, 'aspire_vendor', true); ?>
+                    <div class="rj-post-container <?php if($aspire_vendor == 'yes'){ echo "active-vendor"; } ?>">
                         <?php if (has_post_thumbnail()) : ?>
                             <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')); ?>" 
                                  alt="<?php echo esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true)); ?>" 

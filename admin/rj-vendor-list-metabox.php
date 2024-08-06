@@ -199,3 +199,81 @@ function display_vendor_list_excel_link() {
         echo '<a href="' . esc_url($download_url) . '">Download Vendor List Excel</a>';
     }
 }
+
+// ====== csv to post =============
+add_action('admin_menu', 'csv_to_post_menu');
+
+function csv_to_post_menu() {
+    add_submenu_page('edit.php?post_type=vendor_list', 'CSV to Vendor List', 'CSV to Vendor List', 'manage_options', 'csv-to-post', 'csv_to_post_page');
+}
+
+// Create admin page
+function csv_to_post_page() {
+    ?>
+    <div class="wrap">
+        <h1>CSV to Vendor List</h1>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="csv_file" accept=".csv">
+            <input type="submit" name="submit" value="Import CSV">
+        </form>
+    </div>
+    <?php
+    if (isset($_POST['submit'])) {
+        process_csv($_FILES['csv_file']['tmp_name']);
+    }
+}
+
+// Process CSV file
+function process_csv($file) {
+    if (($handle = fopen($file, "r")) !== FALSE) {
+        fgetcsv($handle, 1000, ",");
+        
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            if (empty($data[0]) && empty($data[1])) {
+                continue; 
+            }
+            
+            $title = sanitize_text_field($data[0]);
+            $content = wp_kses_post($data[1]);
+            $contact_num = $data[2];
+            $email = $data[3];
+            $address = $data[4];
+            $city = $data[5];
+            $state = $data[6];
+            $zip = $data[7];
+            $aspire = $data[8];
+
+            $existing_post = get_page_by_title($title, OBJECT, 'vendor_list');
+            
+            if ($existing_post) {
+                echo "Post already exists: $title<br>";
+                continue;
+            }
+            
+            $post_id = wp_insert_post(array(
+                'post_title'    => $title,
+                'post_content'  => $content,
+                'post_status'   => 'publish',
+                'post_author'   => get_current_user_id(),
+                'post_type'     => 'vendor_list'
+            ));
+
+            echo $aspire . "<br>";
+            
+            update_post_meta($post_id, 'contact_no', $contact_num);
+            update_post_meta($post_id, 'email', $email);
+            update_post_meta($post_id, 'address', $address);
+            update_post_meta($post_id, 'city', $city);
+            update_post_meta($post_id, 'state', $state);
+            update_post_meta($post_id, 'zip_code', $zip);
+            // update_post_meta($post_id, 'aspire_vendor', sanitize_text_field($aspire) );
+            if($aspire == 'Yes' || $aspire == 'yes'){
+                update_post_meta($post_id, 'aspire_vendor', 'yes' );
+            }else{
+                update_post_meta($post_id, 'aspire_vendor', 'no' );
+            }
+
+        }
+        fclose($handle);
+    }
+}

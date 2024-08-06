@@ -23,27 +23,6 @@ Questions
 
 
 
-<?php
-$pdf_data = get_post_meta(get_the_ID(), 'pdf_repeater', true);
-if (!empty($pdf_data)) {
-    echo '<ul>';
-    foreach ($pdf_data as $item) {
-        echo '<li><a href="' . esc_url($item['url']) . '" target="_blank">' . esc_html($item['title']) . '</a></li>';
-    }
-    echo '</ul>';
-}
-?>
-
-
-// foreach ($post_types as $menu_name => $post_details){
-	// 	echo "<pre style='margin-left: 250px;'>";
-	// 	if (isset($post_details['taxonomy'])) {
-	// 		print_r($post_details['taxonomy']['English']['singular']);
-	// 	}
-	// 	echo "</pre>";
-	// }
-
-
 
 Backend is ready for DTE Policy, New Vendor, DTE Benefits, IT help desk, Safety policy, and company newsletter where admin can upload the data like pdf and images
 

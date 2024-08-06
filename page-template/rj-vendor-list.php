@@ -22,14 +22,21 @@ if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)
         <div class="new-vendor-heading">
             <h1 class="rj-main-heading">Vendor List</h1>
 
-            <?php if(!empty(get_option('vendor_list_excel_file')) ){ ?>
-                <a href="<?php echo esc_url(get_option('vendor_list_excel_file', true)); ?>" download="download" class="rj-read-more">
-                    Download Vendor List
-                </a>
-            <?php } ?>
+            <div style="display: flex; gap:10px; flex-wrap:wrap;">
+                <?php if(!empty(get_option('vendor_list_excel_file')) ){ ?>
+                    <a href="<?php echo esc_url(get_option('vendor_list_excel_file', true)); ?>" download="download" class="rj-read-more">
+                        Download Vendor List
+                    </a>
+                <?php } ?>
+
+
+                <a href="https://www.ewingoutdoorsupply.com/login" class="rj-read-more">Strategic Vendors </a>
+
+            </div>
+
         </div>
         
-        <?php
+        <?php /*
             $pdf_url = get_option('vendor_list_excel_file');
             
             if ($pdf_url) { 
@@ -43,15 +50,13 @@ if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)
                     <iframe src="https://docs.google.com/viewer?url=<?php echo $pdf_url; ?>&embedded=true" style="width:100%; height:600px;"  frameborder="0" class="rj-single-post-iframe">
                     </iframe>
                 <?php } ?>              
-            <?php } ?> 
+            <?php } */ ?> 
         
 
 
         <?php 
         
         get_template_part('/template-parts/rj-vendor-search'); ?>
-
-       
 
         <div id="rj-vendor-list">
             
@@ -72,8 +77,10 @@ if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)
                         $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
                         $image_title = get_the_title($image_id);
                         ?>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="rj-post-container">
+                        <div class="col-lg-4 col-md-6 mb-4" style="margin-bottom: 20px">
+                            <?php $aspire_vendor = get_post_meta($post->ID, 'aspire_vendor', true); ?>
+
+                            <div class="rj-post-container <?php if($aspire_vendor == 'yes'){ echo "active-vendor"; } ?>">
                                 <?php if (has_post_thumbnail()) : ?>
                                     <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')); ?>" 
                                          alt="<?php echo esc_attr($image_alt ?: get_the_title()); ?>" 
