@@ -2,6 +2,7 @@
 function rj_employee_posrtal_add_custom_roles() {
 
     $roles = array(
+            'Employees', 
             'Regionals', 
             'Branch Managers', 
             'Office Managers', 
