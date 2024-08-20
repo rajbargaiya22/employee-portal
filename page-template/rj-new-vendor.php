@@ -9,7 +9,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-get_header(); ?>
+get_header();
+if (is_user_logged_in()) {
+?>
 
 
 <div id="rj-newsletter" class="rj-main">
@@ -81,4 +83,8 @@ get_header(); ?>
 	    </div>
     </div>
 
-<?php get_footer();
+<?php
+}else{
+	get_template_part('/template-parts/custom-login-form');
+}
+get_footer();

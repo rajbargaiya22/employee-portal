@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); 
+if (is_user_logged_in()) {
 ?>
 
 <article class="rj-single-post">
@@ -165,7 +166,7 @@ get_header();
     </div>
 </article>
 
-
-
-
-<?php get_footer(); ?>
+<?php }else{
+    get_template_part('/template-parts/custom-login-form');
+}
+get_footer(); ?>

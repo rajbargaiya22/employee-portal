@@ -9,7 +9,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-get_header(); ?>
+get_header(); 
+	if (is_user_logged_in()) { ?>
 
 <main id="rj-newsletter" class="rj-main">
 	<div class="container">
@@ -33,7 +34,7 @@ get_header(); ?>
 				while($rj_newsletter_query->have_posts()) :
 					$rj_newsletter_query->the_post(); ?>
 
-<article class="col-lg-4 col-md-6 mb-4">
+					<article class="col-lg-4 col-md-6 mb-4">
                         <div class="rj-post-container">
                            <?php $image_id = get_post_thumbnail_id();
                             $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
@@ -120,4 +121,9 @@ get_header(); ?>
 	</div>
 </main>
 
-<?php get_footer(); ?>
+
+<?php 
+	}else{
+		get_template_part('/template-parts/custom-login-form');
+	}
+get_footer(); ?>

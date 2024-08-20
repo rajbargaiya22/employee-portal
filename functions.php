@@ -42,7 +42,7 @@ require get_stylesheet_directory() . "/admin/rj-company-newsletter-image-box.php
 require get_stylesheet_directory() . "/admin/rj-new-vendor-meta-box.php";
 require get_stylesheet_directory() . "/admin/rj-vendor-list-metabox.php";
 require get_stylesheet_directory() . "/admin/rj-aspire-metabox.php";
-
+require get_stylesheet_directory() . '/inc/rj-customizer.php';
 
 function get_search_suggestions() {
     $query = sanitize_text_field($_POST['query']);
@@ -270,3 +270,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['frontend_post_nonce_fi
     }
 }
 
+
+
+function enqueue_customizer_scripts() {
+    wp_enqueue_script('custom-customizer', get_template_directory_uri() . '/js/customizer.js', array('jquery', 'customize-controls'), '', true);
+}
+add_action('customize_controls_enqueue_scripts', 'enqueue_customizer_scripts');

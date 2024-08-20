@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Astra
+ * @package Astra-child
  * @since 1.0.0
  */
 
@@ -17,28 +17,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-get_header(); ?>
+get_header(); 
+if (is_user_logged_in()) {
+?>
 
-<?php if ( astra_page_layout() == 'left-sidebar' ) : ?>
+<article class="rj-single-post">
+    <div class="container ">
+		<?php if ( have_posts() ) :
+				while ( have_posts() ) : the_post(); ?>
 
-	<?php get_sidebar(); ?>
+			<h1 class="rj-main-heading">
+                <?php echo get_the_title(); ?>
+            </h1>
 
-<?php endif ?>
+			<?php $content = get_the_content();  ?>
+                <div class="single-post-content">
+                    <?php echo $content; ?>
+                </div>
 
-	<div id="primary" <?php astra_primary_class(); ?>>
+		<?php endwhile; endif;; ?>
+	</div>
+</article>
 
-		<?php astra_primary_content_top(); ?>
-
-		<?php astra_content_page_loop(); ?>
-
-		<?php astra_primary_content_bottom(); ?>
-
-	</div><!-- #primary -->
-
-<?php if ( astra_page_layout() == 'right-sidebar' ) : ?>
-
-	<?php get_sidebar(); ?>
-
-<?php endif ?>
-
-<?php get_footer(); ?>
+<?php
+}else{
+    get_template_part('/template-parts/custom-login-form');
+}
+get_footer(); ?>

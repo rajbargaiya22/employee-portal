@@ -56,26 +56,57 @@ if (is_user_logged_in()) {
                                 ),
         );
 
-?>
+    ?>
 
 
-<main class="rj-employee-portal">
-  <div class="container">
-    <div class="rj-employee-portal-grid rj-employee-portals-bg">
-		<?php
-			foreach($portals as $portal => $info){ 
-				echo '<div><a href="' . get_permalink(get_page_by_title($info[1])).'"><div class="svg-con">'
-						. $info[0] . '</div><h3 class="employee-title">' . $portal . '</h3>';
-				echo '</a></div>';
-			}
-		?>    
+  <main class="rj-employee-portal">
+    <div class="container">
+      <div class="rj-employee-portal-grid rj-employee-portals-bg">
+      <?php
+        foreach($portals as $portal => $info){ 
+          echo '<div><a href="' . get_permalink(get_page_by_title($info[1])).'"><div class="svg-con">'
+              . $info[0] . '</div><h3 class="employee-title">' . $portal . '</h3>';
+          echo '</a></div>';
+        }
+      ?>    
+      </div>
     </div>
-  </div>
-</main>
+  </main>
 
 <?php
 }else{
   get_template_part('/template-parts/custom-login-form');
+}
+
+
+$portal_count = get_theme_mod('custom_portals_count', 3);
+
+for ($i = 0; $i < $portal_count; $i++) {
+    $title = get_theme_mod("custom_portal_{$i}_title", '');
+    $icon = get_theme_mod("custom_portal_{$i}_icon", '');
+    $link = get_theme_mod("custom_portal_{$i}_link", '');
+
+    if (!empty($title) || !empty($icon) || !empty($link)) {
+        echo '<div class="portal">';
+        if (!empty($icon)) {
+            echo wp_kses($icon, array(
+                'svg' => array(
+                    'xmlns' => array(),
+                    'viewbox' => array(),
+                ),
+                'path' => array(
+                    'd' => array(),
+                ),
+            ));
+        }
+        if (!empty($title)) {
+            echo '<span>' . esc_html($title) . '</span>';
+        }
+        if (!empty($link)) {
+            echo '<a href="#">' . esc_html($link) . '</a>';
+        }
+        echo '</div>';
+    }
 }
 
 get_footer(); 

@@ -9,7 +9,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-get_header(); ?>
+get_header(); 
+if (is_user_logged_in()) { ?>
 
 
 <main class="rj-dte-benefits">
@@ -242,4 +243,8 @@ get_header(); ?>
 
 <main>
 
-<?php get_footer(); 
+<?php 
+}else{
+    get_template_part('/template-parts/custom-login-form');
+}
+get_footer(); 

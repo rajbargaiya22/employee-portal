@@ -37,6 +37,8 @@ if (is_user_logged_in()) { ?>
     </div>
 </div>
 
-<?php } ?>
-
-<?php get_footer(); ?>
+<?php 
+}else{
+    get_template_part('/template-parts/custom-login-form');
+} 
+ get_footer(); ?>
