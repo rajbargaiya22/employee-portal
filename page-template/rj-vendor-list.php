@@ -84,9 +84,7 @@ if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)
                         $image_title = get_the_title($image_id);
                         ?>
                         <div class="col-lg-4 col-md-6 mb-4" style="margin-bottom: 20px">
-                            <?php $aspire_vendor = get_post_meta($post->ID, 'aspire_vendor', true); ?>
-
-                            <div class="rj-post-container <?php if($aspire_vendor == 'yes'){ echo "active-vendor"; } ?>">
+                            <div class="rj-post-container">
                                 <?php if (has_post_thumbnail()) : ?>
                                     <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')); ?>" 
                                          alt="<?php echo esc_attr($image_alt ?: get_the_title()); ?>" 
@@ -99,15 +97,33 @@ if (is_user_logged_in() && array_intersect($allowed_roles, (array) $user->roles)
                                     <?php if ( !empty( get_the_content() ) ){ ?>
                                         <p class="mb-0"><?php echo get_the_content(); ?></p>
                                     <?php } ?>
-                                        
-                                    <?php if(get_post_meta($post->ID, 'contact_no') != ''){ ?>
+                                    
+                                    <?php if(get_post_meta($post->ID, 'website_link', true) != ''){ ?>
+                                        <span class="strategic-vendor">
+                                            <?php echo esc_html('Strategic Vendor'); ?>
+                                            
+                                        </span>    
+                                    <?php } ?>
+                                    
+                                    <?php if(get_post_meta($post->ID, 'category', true) != ''){ ?>
+                                        <span>
+                                            <?php echo "<b>Category : </b>" . esc_html(get_post_meta($post->ID, 'category', true)); ?>
+                                        </span>    
+                                    <?php } ?>
+                                    <?php if(get_post_meta($post->ID, 'contact_no', true) != ''){ ?>
                                         <a href="tel:<?php  echo esc_attr(get_post_meta($post->ID, 'contact_no', true)); ?>">
                                         <?php echo "<b>Phone : </b>" . esc_html(get_post_meta($post->ID, 'contact_no', true)); ?>
                                         </a>
                                     <?php } ?>
-                                    <?php if(get_post_meta($post->ID, 'email') != ''){ ?>
+                                    <?php if(get_post_meta($post->ID, 'email', true) != ''){ ?>
                                         <a href="mailto:<?php  echo esc_attr(get_post_meta($post->ID, 'email', true)); ?>">
                                         <?php echo "<b>Email : </b>" . esc_html(get_post_meta($post->ID, 'email', true)); ?>
+                                        </a>
+                                    <?php } ?>
+
+                                    <?php if(get_post_meta($post->ID, 'website_link', true) != ''){ ?>
+                                        <a href="<?php echo esc_url(get_post_meta($post->ID, 'website_link', true)); ?>" target="_blank">
+                                            <?php echo "<b>Website : </b>" . esc_html(get_post_meta($post->ID, 'website_link', true)); ?>
                                         </a>
                                     <?php } ?>
 

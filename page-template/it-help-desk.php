@@ -66,8 +66,8 @@ get_header(); ?>
                         </a>
                     </p>
 
-                    <a href="http://maps.google.com/maps?q=<?php echo esc_attr(get_theme_mod('rj_employee_portal_help_desk_address', '2701 Maitland Center PKWY, Suite 200 Maitland, Florida 32751')); ?>" target="_blank">
-                        <?php echo esc_html(get_theme_mod('rj_employee_portal_help_desk_address', '2701 Maitland Center PKWY, Suite 200 Maitland, Florida 32751')); ?>
+                    <a href="http://maps.google.com/maps?q=<?php echo esc_attr(get_theme_mod('rj_employee_portal_help_desk_address', '500 Winderley Place Suite 222 Maitland, FL 32751')); ?>" target="_blank">
+                        <?php echo esc_html(get_theme_mod('rj_employee_portal_help_desk_address', '500 Winderley Place Suite 222 Maitland, FL 32751')); ?>
                     </a>
                 </div>
             </div>

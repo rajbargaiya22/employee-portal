@@ -78,7 +78,7 @@ if (is_user_logged_in()) {
   get_template_part('/template-parts/custom-login-form');
 }
 
-
+/*
 $portal_count = get_theme_mod('custom_portals_count', 3);
 
 for ($i = 0; $i < $portal_count; $i++) {
@@ -107,6 +107,6 @@ for ($i = 0; $i < $portal_count; $i++) {
         }
         echo '</div>';
     }
-}
+} */
 
 get_footer(); 

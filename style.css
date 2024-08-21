@@ -319,7 +319,18 @@ label[for="searchsubmit"] svg{
 	padding: 0 10px;
 }
 #rj-vendor-list .rj-post-content{
-	gap: 5px
+	gap: 5px;
+	position: relative;
+}
+#rj-vendor-list .strategic-vendor{
+	position: absolute;
+	top: 0;
+	right: 0;  	
+	background-color: var(--blue-color);
+	color: var(--white-color);
+	font-size: 12px;
+	padding: 2px 6px 3px;
+	font-weight: 600;
 }
 
 .new-vendor-heading{

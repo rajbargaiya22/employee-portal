@@ -139,8 +139,7 @@ function handle_vendor_search() {
         <div class="row">
             <?php while ($query->have_posts()) : $query->the_post(); ?>
                 <div class="col-lg-4 col-md-6 mb-4"  style="margin-bottom: 10px">
-                <?php $aspire_vendor = get_post_meta($post->ID, 'aspire_vendor', true); ?>
-                    <div class="rj-post-container <?php if($aspire_vendor == 'yes'){ echo "active-vendor"; } ?>">
+                    <div class="rj-post-container">
                         <?php if (has_post_thumbnail()) : ?>
                             <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'medium')); ?>" 
                                  alt="<?php echo esc_attr(get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true)); ?>" 
@@ -151,6 +150,19 @@ function handle_vendor_search() {
                             <?php if ( !empty( get_the_content() ) ){ ?>
                                 <p class="mb-0"><?php echo get_the_content(); ?></p>
                             <?php } ?>
+
+                            <?php if(get_post_meta(get_the_ID(), 'website_link', true) != ''){ ?>
+                                <span class="strategic-vendor">
+                                    <?php echo esc_html('Strategic Vendor'); ?>
+                                </span>    
+                            <?php } ?>
+
+                            <?php if(get_post_meta(get_the_ID(), 'category', true) != ''){ ?>
+                                <span>
+                                    <?php echo "<b>Category : </b>" . esc_html(get_post_meta(get_the_ID(), 'category', true)); ?>
+                                </span>    
+                            <?php } ?>
+
                             <?php if (get_post_meta(get_the_ID(), 'contact_no', true)) : ?>
                                 <a href="tel:<?php echo esc_attr(get_post_meta(get_the_ID(), 'contact_no', true)); ?>">
                                     <b>Phone : </b><?php echo esc_html(get_post_meta(get_the_ID(), 'contact_no', true)); ?>
@@ -161,6 +173,13 @@ function handle_vendor_search() {
                                     <b>Email : </b><?php echo esc_html(get_post_meta(get_the_ID(), 'email', true)); ?>
                                 </a>
                             <?php endif; ?>
+
+                            <?php if(get_post_meta(get_the_ID(), 'website_link', true) != ''){ ?>
+                                <a href="<?php echo esc_url(get_post_meta(get_the_ID(), 'website_link', true)); ?>" target="_blank">
+                                    <?php echo "<b>Website : </b>" . esc_html(get_post_meta(get_the_ID(), 'website_link', true)); ?>
+                                </a>
+                            <?php } ?>
+
                             <address>
                                 <?php 
                                 $address = get_post_meta(get_the_ID(), 'address', true);

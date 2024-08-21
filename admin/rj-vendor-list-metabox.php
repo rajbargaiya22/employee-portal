@@ -22,7 +22,9 @@ function rj_employee_portal_render_vendor_list_metabox($post) {
                     'Address'    => 'text',
                     'City'       => 'text',
                     'State'      => 'text',
-                    'Zip Code'   => 'text'
+                    'Zip Code'   => 'text',
+                    'Website Link'  => 'text',
+                    'Category'  => 'text',
                 );
 
     foreach ($fields as $field => $type) {
@@ -40,6 +42,8 @@ function rj_employee_portal_render_vendor_list_metabox($post) {
         </p>
         <?php
     }
+
+    /*
     $aspire_vendor = get_post_meta($post->ID, 'aspire_vendor', true);
     ?>
     <p>
@@ -50,7 +54,7 @@ function rj_employee_portal_render_vendor_list_metabox($post) {
             <option value="no" <?php selected($aspire_vendor, 'no'); ?>>No</option>
         </select>
     </p>
-    <?php
+    <?php */
 }
 
 function save_rj_employee_portal_vendor_list_metabox($post_id) {
@@ -67,7 +71,7 @@ function save_rj_employee_portal_vendor_list_metabox($post_id) {
         return $post_id;
     }
 
-    $fields = array('Phone', 'Contact No', 'Email', 'Address', 'City', 'State', 'Zip Code');
+    $fields = array('Phone', 'Contact No', 'Email', 'Address', 'City', 'State', 'Zip Code', 'Website Link', 'Category');
     foreach ($fields as $field) {
         $field_name = strtolower(str_replace(' ', '_', $field));
         if (isset($_POST[$field_name])) {
@@ -75,9 +79,9 @@ function save_rj_employee_portal_vendor_list_metabox($post_id) {
         }
     }
 
-    if (isset($_POST['aspire_vendor'])) {
-        update_post_meta($post_id, 'aspire_vendor', sanitize_text_field($_POST['aspire_vendor']));
-    }
+    // if (isset($_POST['aspire_vendor'])) {
+    //     update_post_meta($post_id, 'aspire_vendor', sanitize_text_field($_POST['aspire_vendor']));
+    // }
 
 }
 add_action('save_post', 'save_rj_employee_portal_vendor_list_metabox');
@@ -210,6 +214,8 @@ function csv_to_post_page() {
     ?>
     <div class="wrap">
         <h1>CSV to Vendor List</h1>
+        <b>CSV Format : </b>
+        <em>Name, Content, Contat No, Email, Address, City, State, Zip, Website Link, Category</em>
         <form method="post" enctype="multipart/form-data">
             <input type="file" name="csv_file" accept=".csv">
             <input type="submit" name="submit" value="Import CSV">
@@ -239,7 +245,9 @@ function process_csv($file) {
             $city = $data[5];
             $state = $data[6];
             $zip = $data[7];
-            $aspire = $data[8];
+            $website = $data[8];
+            $category = $data[9];
+            // $aspire = $data[10];
 
             $existing_post = get_page_by_title($title, OBJECT, 'vendor_list');
             
@@ -263,13 +271,15 @@ function process_csv($file) {
             update_post_meta($post_id, 'address', $address);
             update_post_meta($post_id, 'city', $city);
             update_post_meta($post_id, 'state', $state);
+            update_post_meta($post_id, 'website_link', $website);
+            update_post_meta($post_id, 'category', $category);
             update_post_meta($post_id, 'zip_code', $zip);
             // update_post_meta($post_id, 'aspire_vendor', sanitize_text_field($aspire) );
-            if($aspire == 'Yes' || $aspire == 'yes'){
-                update_post_meta($post_id, 'aspire_vendor', 'yes' );
-            }else{
-                update_post_meta($post_id, 'aspire_vendor', 'no' );
-            }
+            // if($aspire == 'Yes' || $aspire == 'yes'){
+            //     update_post_meta($post_id, 'aspire_vendor', 'yes' );
+            // }else{
+            //     update_post_meta($post_id, 'aspire_vendor', 'no' );
+            // }
 
         }
         fclose($handle);
