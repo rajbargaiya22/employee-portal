@@ -297,8 +297,12 @@ label[for="searchsubmit"] svg{
 .vendor-view-more{
 	margin: 10px 0;
 }
-
-
+.contact-page-forms{
+	margin-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
 .vendor-searchform{
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(120px, clamp(150px, 20vw, 200px)));

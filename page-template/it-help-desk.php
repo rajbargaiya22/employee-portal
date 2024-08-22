@@ -75,6 +75,14 @@ get_header(); ?>
                 <img src="<?php echo esc_url(get_stylesheet_directory_uri(). '/assets/images/it-help-desk.png'); ?>" alt="">
             </div>
         </div>
+
+        <div class="contact-page-forms">
+            <a href="https://employee-portal.dhaninfo.net/wp-content/uploads/2024/08/IT-Support-Contact-Information-1.docx" class="rj-read-more" download target="_blank">
+                IT-Support-Contact-Information
+            </a>
+            <a href="https://forms.office.com/pages/responsepage.aspx?id=oFraijPWDkmsihMRQ9JsWIAI2UruqShKildMVSu6u45URDUxWE5aODFRNlJGWTAxVEtKMVU4WElDNi4u&route=shorturl" class="rj-read-more" target="_blank">IT New Hire Form</a>
+            <a href="https://forms.office.com/pages/responsepage.aspx?id=oFraijPWDkmsihMRQ9JsWIAI2UruqShKildMVSu6u45URDUxWE5aODFRNlJGWTAxVEtKMVU4WElDNi4u&route=shorturl" class="rj-read-more" target="_blank">IT Support Feedback Form</a>
+        </div>
     </div>
 </main>
 
